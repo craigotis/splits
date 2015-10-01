@@ -6,6 +6,11 @@ module.exports = function(defaults) {
     // Add options here
   });
 
+  app.import(app.bowerDirectory + '/bootstrap/dist/css/bootstrap.css.map');
+  app.import(app.bowerDirectory + '/bootswatch-dist/js/bootstrap.js');
+  app.import(app.bowerDirectory + '/bootswatch-dist/css/bootstrap.css');
+  app.import('vendor/local_config.js');
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# local-machine file containing Strava access key (temporary workaround until normal access flow implemented)
+/vendor/local_config.js
+
 # compiled output
 /dist
 /tmp

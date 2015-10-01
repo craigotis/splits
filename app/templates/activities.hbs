@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Distance (Miles)</th>
+            <th>Pace (Mile)</th>
+            <th>Cadence</th>
+            <th>Heart Rate</th>
+            <th>Effort</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each model.activities as |activity|}}
+            <tr>
+                <td>{{activity.dateStr}}</td>
+                <td>{{activity.distanceInMiles}}</td>
+                <td>{{activity.paceStr}}</td>
+                <td>{{activity.cadenceStr}}</td>
+                <td style={{activity.cssStyle}}>{{activity.heartrateStr}}</td>
+                <td>{{activity.effortStr}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
