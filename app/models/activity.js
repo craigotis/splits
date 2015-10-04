@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+import * as NumberUtil from '../utils/number-util';
+
 export default Ember.Object.extend({
     heartrate: null,
     speed: null,
@@ -22,10 +24,6 @@ export default Ember.Object.extend({
         var paceUnrounded = (26.82 / this.get('speed'));
         var minutes = Math.floor(paceUnrounded);
         var seconds = ((paceUnrounded.toFixed(2) % 1) * 60).toFixed(0);
-        return minutes + ':' + padDigits(seconds, 2);
+        return minutes + ':' + NumberUtil.padDigits(seconds, 2);
     })
 });
-
-function padDigits(number, digits) {
-    return new Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
-}

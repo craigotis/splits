@@ -10,6 +10,7 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/bootswatch-dist/js/bootstrap.js');
   app.import(app.bowerDirectory + '/bootswatch-dist/css/bootstrap.css');
   app.import('vendor/local_config.js');
+  app.import('vendor/timer.css');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

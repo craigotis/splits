@@ -1,0 +1,32 @@
+<h2>Weekly Stats</h2>
+<span class="label label-default">5wk trailing average: <b>{{model.averageMileage}} miles</b></span>
+{{#if model.trendingUp}}
+  <span class="label label-success">Trending Up!</span>
+{{else}}
+  {{#if model.trendingSame}}
+    <span class="label label-default">Trending Same</span>
+  {{else}}
+    <span class="label label-danger">Trending Down</span>
+  {{/if}}
+{{/if}}
+<br/>
+<span class="label label-default">Prior 5wk trailing average: <b>{{model.trailingAverageMileage}} miles</b></span>
+<table class="table" style="margin-top: 10px;">
+  <tbody>
+    {{#each model.weeklyStats as |week|}}
+    <tr class="row" style="text-align: center;">
+      <td style="vertical-align: middle;">
+        <h3 class="{{unless week.restWeek 'text-success'}} {{if week.restWeek 'text-warning'}}">{{week.mileage}} mi</h3>
+        <h6>{{week.description}}</h6>
+      </td>
+      {{#each week.days as |day|}}
+      <td class="{{if day.today 'active'}}">
+        <b><h3 class="{{unless day.restDay 'text-info'}} {{if day.restDay 'text-muted'}}">{{day.mileage}}</h3></b>
+        <br/>
+        {{day.dayStr}}
+      </td>
+      {{/each}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

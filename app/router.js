@@ -7,6 +7,8 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('activities');
+  this.route('loading');
+  this.route('weekly');
 });
 
 export default Router;
