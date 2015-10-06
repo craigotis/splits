@@ -44,7 +44,7 @@ export default Ember.Route.extend({
             weeklyStats: new Ember.RSVP.Promise(function(resolve) {
                 Client.create().getActivities().then(function(activities) {
                     var averageWeeklyMileage = ActivityUtil.getAverageWeeklyMileage(activities);
-                    resolve(ActivityUtil.createWeeklyStats(activities, averageWeeklyMileage));
+                    resolve(ActivityUtil.createWeeklyStats(activities, averageWeeklyMileage, 16));
                 });
             })
         });

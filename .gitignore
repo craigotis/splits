@@ -18,3 +18,7 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+
+# local Sublime Text project
+*.sublime-project
+*.sublime-workspace

@@ -1,0 +1,12 @@
+<table class="table" style="margin-top: 10px;">
+  <tbody>
+    {{#each model.monthlyStats as |month|}}
+    <tr class="row" style="text-align: center;">
+      <td style="vertical-align: middle;">
+        <h3 class="text-success">{{month.mileage}} mi</h3>
+        <h6>{{month.description}}</h6>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

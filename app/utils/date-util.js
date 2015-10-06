@@ -15,6 +15,35 @@ export function daysThisWeek(currentDate) {
     return days;
 }
 
+function daysThisMonth(currentDate) {
+    var days = [];
+    if (currentDate === undefined) {
+        currentDate = new Date();
+    }
+    var startingMonth = currentDate.getMonth();
+    var currentDay = new Date(currentDate.getTime());
+    while (true) {
+        console.log('Now: ' + currentDay);
+        days.push(currentDay);
+        currentDay = new Date(currentDay.getTime());
+        currentDay.setDate(currentDay.getDate() + 1);
+        if (currentDay.getMonth() !== startingMonth) {
+            break;
+        }
+    }
+    return days;
+}
+
+export function daysOfMonth(containingDate) {
+    if (containingDate === undefined) {
+        containingDate = new Date();
+    }
+    while (containingDate.getDate() !== 1) {
+        containingDate.setDate(containingDate.getDate() - 1);
+    }
+    return daysThisMonth(containingDate);
+}
+
 export function daysOfWeek(containingDate) {
     if (containingDate === undefined) {
         containingDate = new Date();
@@ -31,6 +60,10 @@ export function getShortMonth(month) {
 
 export function getShortDayOfWeek(dayOfWeek) {
     return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][dayOfWeek];
+}
+
+export function getFullDayOfWeek(dayOfWeek) {
+    return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
 }
 
 export function dateEquals(one, two) {

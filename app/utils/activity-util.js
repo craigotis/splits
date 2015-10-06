@@ -1,5 +1,29 @@
 import * as DateUtil from './date-util';
 
+export function mostFrequentRunDay(activities) {
+	var dayCounts = {};
+	$.each([0, 1, 2, 3, 4, 5, 6], function(idx) {
+		dayCounts[idx] = 0;
+	});
+	$.each(activities, function(idx, el) {
+		dayCounts[el.get('date').getDay()] = dayCounts[el.get('date').getDay()] + 1;
+	});
+	var maxDay = 0;
+	var maxCount = 0;
+	$.each([0, 1, 2, 3, 4, 5, 6], function(idx) {
+		var runsForThisDay = dayCounts[idx];
+		console.log('Ran ' + runsForThisDay + ' on ' + idx);
+		if (runsForThisDay > maxCount) {
+			maxCount = runsForThisDay;
+			maxDay = idx;
+		}
+	});
+	return {
+		day: DateUtil.getFullDayOfWeek(maxDay),
+		count: maxCount
+	};
+}
+
 export function mileageSum(activities) {
 	var mileage = 0;
 	$.each(activities, function(idx, el) {
@@ -24,7 +48,7 @@ export function getAverageWeeklyMileage(activities, startingOffset) {
 	if (startingOffset === undefined) {
 		startingOffset = 0;
 	}
-	var weeks = createWeeklyStats(activities);
+	var weeks = createWeeklyStats(activities, 0, 16);
 	var sum = 0;
 	var count = 0;
 	$.each(weeks, function(idx, el) {
@@ -67,12 +91,36 @@ function createWeekStats(activities, averageWeeklyMileage, date) {
 	return lastWeek;
 }
 
-export function createWeeklyStats(activities, averageWeeklyMileage) {
+export function createWeeklyStats(activities, averageWeeklyMileage, numWeeks) {
 	var weeklyStats = [];
-	$.each([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], function(idx, el) {
+	for (var idx = 0; idx < numWeeks; idx++) {
 		var date = new Date();
-		date.setDate(date.getDate() - (7 * el));
+		date.setDate(date.getDate() - (7 * idx));
 		weeklyStats.push(createWeekStats(activities, averageWeeklyMileage, date));
-	});
+	}
 	return weeklyStats;
+}
+
+function createMonthStats(activities, date) {
+	var daysForMonth = DateUtil.daysOfMonth(date);
+	var cumulativeMileage = 0;
+	$.each(daysForMonth, function(idx, el) {
+		cumulativeMileage += parseFloat(mileageSum(matchActivities(activities, [el])));
+	});
+	var description = DateUtil.getShortMonth(date.getMonth() - 1) + ' ' + date.getFullYear();
+	var monthStats = {
+		mileage: cumulativeMileage.toFixed(2),
+		description: description
+	};
+	return monthStats;
+}
+
+export function createMonthlyStats(activities, numMonths) {
+	var monthlyStats = [];
+	for (var idx = 0; idx < numMonths; idx++) {
+		var date = new Date();
+		date.setMonth(date.getMonth() - idx);
+		monthlyStats.push(createMonthStats(activities, date));
+	}
+	return monthlyStats;
 }

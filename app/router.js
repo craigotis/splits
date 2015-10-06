@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('activities');
   this.route('loading');
   this.route('weekly');
+  this.route('monthly');
 });
 
 export default Router;

@@ -12,7 +12,7 @@ export default Ember.Object.extend({
         return isNaN(temp) ? '--' : temp.toFixed(2);
     }),
     distanceInMiles: Ember.computed('distance', function() {
-        return (this.get('distance') * 0.000621371).toFixed(2);
+        return (this.get('distance') * NumberUtil.METERS_TO_MILES).toFixed(2);
     }),
     cadenceStr: Ember.computed('cadence', function() {
         return this.get('cadence') ? this.get('cadence') : '--';
