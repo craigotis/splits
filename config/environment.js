@@ -4,8 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-splits',
     environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     contentSecurityPolicy: {
       'connect-src': "'self' https://www.strava.com",
       'script-src': "'self' https://www.strava.com",

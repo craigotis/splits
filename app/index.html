@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/ember-splits.css">
 
+    <script>
+        window.requireNode = window.require;
+        delete window.require;
+        delete window.module;
+    </script>
+
     {{content-for 'head-footer'}}
   </head>
   <body>
