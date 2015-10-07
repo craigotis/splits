@@ -1,17 +1,23 @@
-# Ember-splits
+# Splits
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Splits is an unofficial Strava-based performance analytics tool. Its primary purpose is for me to learn Ember.js, but if you find it useful for analyzing your training, that's great too.
 
-## Prerequisites
+![Screenshot](./screen1.png)
 
-You will need the following things properly installed on your computer.
+![Screenshot](./screen2.png)
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+# Config by:
+
+1. Creating a file vendor/local_config.js
+2. Filling it with the contents:
+
+```
+var gOptions = {
+    access_key: 'xxx'
+};
+```
+
+Where `'xxx'` is your access key from Strava. This is a temporary workaround until login is implemented.
 
 ## Installation
 
@@ -20,34 +26,14 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * `bower install`
 
-## Running / Development
+### Development & Running
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Use `ember build` to build the app. (Not for deployment, just for... building.)
+* Use `ember test` to run the tests
+* Use either `ember serve` to run in a browser, or `electron .` to run as an Electron standalone app [suh-weeeet]
 
-### Code Generators
+# Using great code from:
 
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://www.ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+- https://gist.github.com/cybrox/97bca1c3f2cb7c200600 [GIST-ey?]
+- https://bootswatch.com/superhero/ [MIT]
+- http://www.css-spinners.com/spinner/throbber [MIT]
