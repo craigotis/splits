@@ -23,7 +23,6 @@ function daysThisMonth(currentDate) {
     var startingMonth = currentDate.getMonth();
     var currentDay = new Date(currentDate.getTime());
     while (true) {
-        console.log('Now: ' + currentDay);
         days.push(currentDay);
         currentDay = new Date(currentDay.getTime());
         currentDay.setDate(currentDay.getDate() + 1);
