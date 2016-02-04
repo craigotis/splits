@@ -78,9 +78,9 @@ function createWeekStats(activities, averageWeeklyMileage, date) {
 			today: DateUtil.dateEquals(new Date(), el)
 		});
 	});
-	var description = DateUtil.getShortMonth(daysForWeek[0].getMonth() - 1) + ' ' + daysForWeek[0].getDate();
+	var description = DateUtil.getShortMonth(daysForWeek[0].getMonth()) + ' ' + daysForWeek[0].getDate();
 	description += ' - ';
-	description += DateUtil.getShortMonth(daysForWeek[6].getMonth() - 1) + ' ' + daysForWeek[6].getDate();
+	description += DateUtil.getShortMonth(daysForWeek[6].getMonth()) + ' ' + daysForWeek[6].getDate();
 	var mileageForWeek = mileageSum(matchActivities(activities, daysForWeek));
 	var lastWeek = {
 		days: dayStats,
@@ -107,7 +107,7 @@ function createMonthStats(activities, date) {
 	$.each(daysForMonth, function(idx, el) {
 		cumulativeMileage += parseFloat(mileageSum(matchActivities(activities, [el])));
 	});
-	var description = DateUtil.getShortMonth(date.getMonth() - 1) + ' ' + date.getFullYear();
+	var description = DateUtil.getShortMonth(date.getMonth()) + ' ' + date.getFullYear();
 	var monthStats = {
 		mileage: cumulativeMileage.toFixed(2),
 		description: description

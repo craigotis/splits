@@ -54,7 +54,7 @@ export function daysOfWeek(containingDate) {
 }
 
 export function getShortMonth(month) {
-    return ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][month];
+    return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][month];
 }
 
 export function getShortDayOfWeek(dayOfWeek) {
