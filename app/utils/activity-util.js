@@ -86,7 +86,7 @@ function createWeekStats(activities, averageWeeklyMileage, date) {
 		days: dayStats,
 		mileage: mileageForWeek,
 		description: description,
-		restWeek: mileageForWeek > 0 && mileageForWeek < (averageWeeklyMileage * 0.65),
+		restWeek: mileageForWeek < (averageWeeklyMileage * 0.65),
 	};
 	return lastWeek;
 }
