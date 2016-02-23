@@ -9,7 +9,7 @@ export default Ember.Route.extend({
         return Ember.RSVP.hash({
             monthlyStats: new Ember.RSVP.Promise(function(resolve) {
                 Client.create().getActivities().then(function(activities) {
-                    resolve(ActivityUtil.createMonthlyStats(activities, 4));
+                    resolve(ActivityUtil.createMonthlyStats(activities, 8));
                 });
             })
         });
