@@ -1,4 +1,16 @@
 import * as DateUtil from './date-util';
+import * as NumberUtil from './number-util';
+
+export function speedToPace(speed) {
+	var paceUnrounded = (26.82 / speed);
+	var minutes = Math.floor(paceUnrounded);
+	var seconds = ((paceUnrounded.toFixed(3) % 1) * 60).toFixed(0);
+	if (seconds == 60) {
+		minutes++;
+		seconds = 0;
+	}
+	return minutes + ':' + NumberUtil.padDigits(seconds, 2);
+}
 
 export function mostFrequentRunDay(activities) {
 	var dayCounts = {};
@@ -12,7 +24,6 @@ export function mostFrequentRunDay(activities) {
 	var maxCount = 0;
 	$.each([0, 1, 2, 3, 4, 5, 6], function(idx) {
 		var runsForThisDay = dayCounts[idx];
-		console.log('Ran ' + runsForThisDay + ' on ' + idx);
 		if (runsForThisDay > maxCount) {
 			maxCount = runsForThisDay;
 			maxDay = idx;
@@ -104,13 +115,22 @@ export function createWeeklyStats(activities, averageWeeklyMileage, numWeeks) {
 function createMonthStats(activities, date) {
 	var daysForMonth = DateUtil.daysOfMonth(date);
 	var cumulativeMileage = 0;
+	var speedTotal = 0;
+	var speedCount = 0;
+	$.each(matchActivities(activities, daysForMonth), function(idx, el) {
+		if (el.get('speed')) {
+			speedTotal += el.get('speed');
+			speedCount++;
+		}
+	});
 	$.each(daysForMonth, function(idx, el) {
 		cumulativeMileage += parseFloat(mileageSum(matchActivities(activities, [el])));
 	});
 	var description = DateUtil.getShortMonth(date.getMonth()) + ' ' + date.getFullYear();
 	var monthStats = {
 		mileage: cumulativeMileage.toFixed(2),
-		description: description
+		description: description,
+		averagePace: speedToPace(speedTotal / speedCount)
 	};
 	return monthStats;
 }

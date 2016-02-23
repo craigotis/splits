@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 import * as NumberUtil from '../utils/number-util';
+import * as ActivityUtil from '../utils/activity-util';
 
 export default Ember.Object.extend({
     heartrate: null,
@@ -21,9 +22,6 @@ export default Ember.Object.extend({
         return this.get('heartrate') ? this.get('heartrate') : '--';
     }),
     paceStr: Ember.computed('speed', function() {
-        var paceUnrounded = (26.82 / this.get('speed'));
-        var minutes = Math.floor(paceUnrounded);
-        var seconds = ((paceUnrounded.toFixed(2) % 1) * 60).toFixed(0);
-        return minutes + ':' + NumberUtil.padDigits(seconds, 2);
+        return ActivityUtil.speedToPace(this.get('speed'));
     })
 });
