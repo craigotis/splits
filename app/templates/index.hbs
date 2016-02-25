@@ -3,21 +3,20 @@
 <h2>You run most frequently on {{model.mostFrequentDay.day}}</h2>
 <!-- TODO: Turn this into a component -->
 <table class="table" style="margin-top: 10px;">
-  <tbody>
-    {{#each model.weekStats as |week|}}
-    <tr class="row" style="text-align: center;">
-      <td style="vertical-align: middle;">
-        <h3 class="{{unless week.restWeek 'text-success'}} {{if week.restWeek 'text-warning'}}">{{week.mileage}} mi</h3>
-        <h6>{{week.description}}</h6>
-      </td>
-      {{#each week.days as |day|}}
-      <td class="{{if day.today 'active'}}">
-        <b><h3 class="{{unless day.restDay 'text-info'}} {{if day.restDay 'text-muted'}}">{{day.mileage}}</h3></b>
-        <br/>
-        {{day.dayStr}}
-      </td>
-      {{/each}}
-    </tr>
-    {{/each}}
-  </tbody>
+    <tbody>
+        {{#each model.weekStats as |week|}}
+            <tr class="row" style="text-align: center;">
+                <td style="vertical-align: middle;">
+                    <h3 class="{{unless week.restWeek 'text-success'}} {{if week.restWeek 'text-warning'}}">{{week.mileage}} mi</h3>
+                    <h6>{{week.description}}</h6>
+                </td>
+                {{#each week.days as |day|}}
+                    <td class="{{if day.today 'active'}}">
+                        <b><h3 class="{{unless day.restDay 'text-info'}} {{if day.restDay 'text-muted'}}">{{day.mileage}}</h3></b>
+                        <br/> {{day.dayStr}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/each}}
+    </tbody>
 </table>
