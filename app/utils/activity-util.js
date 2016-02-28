@@ -5,7 +5,7 @@ export function speedToPace(speed) {
     var paceUnrounded = (26.82 / speed);
     var minutes = Math.floor(paceUnrounded);
     var seconds = ((paceUnrounded.toFixed(3) % 1) * 60).toFixed(0);
-    if (seconds == 60) {
+    if (seconds === 60) {
         minutes++;
         seconds = 0;
     }
