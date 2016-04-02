@@ -8,8 +8,11 @@ export default Ember.Object.extend({
     speed: null,
     distance: null,
     cadence: null,
+    effort: Ember.computed(function() {
+        return this.get('heartrate') / this.get('speed');
+    }),
     effortStr: Ember.computed(function() {
-        var temp = this.get('heartrate') / this.get('speed');
+        var temp = this.get('effort');
         return isNaN(temp) ? '--' : temp.toFixed(2);
     }),
     distanceInMiles: Ember.computed('distance', function() {

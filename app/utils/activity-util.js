@@ -117,28 +117,40 @@ function createMonthStats(activities, date) {
     var cumulativeMileage = 0;
     var speedTotal = 0;
     var speedCount = 0;
+    var effortTotal = 0;
+    var effortCount = 0;
     $.each(matchActivities(activities, daysForMonth), function(idx, el) {
         if (el.get('speed')) {
             speedTotal += el.get('speed');
             speedCount++;
+        }
+        if (el.get('effort')) {
+            effortTotal += el.get('effort');
+            effortCount++;
         }
     });
     $.each(daysForMonth, function(idx, el) {
         cumulativeMileage += parseFloat(mileageSum(matchActivities(activities, [el])));
     });
     var description = DateUtil.getShortMonth(date.getMonth()) + ' ' + date.getFullYear();
-    var monthStats = {
-        mileage: cumulativeMileage.toFixed(2),
+    return {
+        mileage: cumulativeMileage,
+        mileageStr: cumulativeMileage.toFixed(2),
         description: description,
+        averageSpeed: speedTotal / speedCount,
+        averageEffort: effortTotal / effortCount,
         averagePace: speedToPace(speedTotal / speedCount)
     };
-    return monthStats;
 }
 
 export function createMonthlyStats(activities, numMonths) {
     var monthlyStats = [];
     for (var idx = 0; idx < numMonths; idx++) {
         var date = new Date();
+        // Set day to 1 to ensure we traverse months properly. Without
+        // this call, we end up iterating both Dec 31st and Dec 1st,
+        // because 'Hey, how do calendars work?'
+        date.setDate(1);
         date.setMonth(date.getMonth() - idx);
         monthlyStats.push(createMonthStats(activities, date));
     }

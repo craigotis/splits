@@ -1,0 +1,11 @@
+<div class="form-group">
+    {{#x-select class='form-control btn-default' value=dataOption as |dataOpt| }}
+        {{#each chartDataTypes as |chartDataType|}}
+            {{#dataOpt.option value=chartDataType.key }}{{chartDataType.name}}{{/dataOpt.option}}
+        {{/each}}
+    {{/x-select}}
+</div>
+
+<div class="chart-container">
+    {{ember-chart options=chartOptions type=chartType data=chartData}}
+</div>

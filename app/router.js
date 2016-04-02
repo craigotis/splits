@@ -10,6 +10,7 @@ Router.map(function() {
     this.route('loading');
     this.route('weekly');
     this.route('monthly');
+    this.route('charts');
 });
 
 export default Router;

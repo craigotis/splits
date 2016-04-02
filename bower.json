@@ -6,7 +6,10 @@
         "ember-cli-test-loader": "0.2.2",
         "ember-qunit-notifications": "0.1.0",
         "bootstrap": "^3",
-        "bootswatch-dist": "superhero"
+        "bootswatch-dist": "superhero",
+        "d3": "~3.5.3",
+        "lodash": "~3.10.0",
+        "chartjs": "1.0.2"
     },
     "resolutions": {
         "qunit-notifications": "~0.1.0"
