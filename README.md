@@ -3,8 +3,9 @@
 Splits is an unofficial Strava-based performance analytics tool. Its primary purpose is for me to learn Ember.js, but if you find it useful for analyzing your training, that's great too.
 
 ![Screenshot](./screen1.png)
-
 ![Screenshot](./screen2.png)
+![Screenshot](./screen3.png)
+![Screenshot](./screen4.png)
 
 # Config by:
 
