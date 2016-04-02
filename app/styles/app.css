@@ -1,5 +1,15 @@
 /* Put your CSS here */
 
+body {
+    padding-top: 20px;
+}
+#windowTitle {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    top: 0;
+    font-weight: bold;
+}
 .ember-application {
     margin: 20px;
 }
