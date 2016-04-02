@@ -34,6 +34,5 @@ Where `'xxx'` is your access key from Strava. This is a temporary workaround unt
 
 # Using great code from:
 
-- https://gist.github.com/cybrox/97bca1c3f2cb7c200600 [GIST-ey?]
 - https://bootswatch.com/superhero/ [MIT]
 - http://www.css-spinners.com/spinner/throbber [MIT]
