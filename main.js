@@ -9,14 +9,6 @@ var mainWindow = null;
 var template = [{
     label: 'File',
     submenu: [{
-        label: 'Open',
-        accelerator: 'Command+O',
-        click: function() {
-            dialog.showOpenDialog(mainWindow, {
-                properties: ['openFile', 'multiSelections', 'createDirectory']
-            }, onFileOpen);
-        }
-    }, {
         label: 'Quit',
         accelerator: 'Command+Q',
         click: function() {
